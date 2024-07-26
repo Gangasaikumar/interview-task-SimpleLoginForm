@@ -2,15 +2,12 @@ import "./App.css";
 import { useFormik } from "formik";
 
 function App() {
-
-  const validate=values=>{
-    const errors={};
-    if(!values.email)
-      errors.email="required a email field";
-    if(!values.password)
-      errors.password="required a password field";
+  const validate = (values) => {
+    const errors = {};
+    if (!values.email) errors.email = "required a email field";
+    if (!values.password) errors.password = "required a password field";
     return errors;
-  }
+  };
 
   const loginForm = useFormik({
     initialValues: {
@@ -19,19 +16,24 @@ function App() {
     },
     validate,
     onSubmit: (values) => {
-      if(values.email&& values.email==="test@gmail.com"&&values.password&&values.password==="123")
+      if (
+        values.email &&
+        values.email === "test@gmail.com" &&
+        values.password &&
+        values.password === "123"
+      )
         alert("login sucessful.!");
-      else alert ("invalid deatils");
+      else alert("invalid deatils");
     },
   });
 
   return (
     <>
       <div className="main-container">
-      <h2 id="main-title">
+        <h2 id="main-title">
           Simple login <span>Form</span>
         </h2>
-        <form onSubmit={loginForm.handleSubmit} >
+        <form onSubmit={loginForm.handleSubmit}>
           <div className="inputs">
             <label htmlFor="email">Name</label>
             <input
@@ -54,9 +56,17 @@ function App() {
               onBlur={loginForm.handleBlur}
             />
           </div>
-          <input type="submit" value="sbmit" id="submit-btn"/>
-          {loginForm.errors.email?<div className="error">{loginForm.errors.email}</div>:""}
-          {loginForm.errors.password?<div className="error">{loginForm.errors.password}</div>:""}
+          <input type="submit" value="sbmit" id="submit-btn" />
+          {loginForm.errors.email ? (
+            <div className="error">{loginForm.errors.email}</div>
+          ) : (
+            ""
+          )}
+          {loginForm.errors.password ? (
+            <div className="error">{loginForm.errors.password}</div>
+          ) : (
+            ""
+          )}
         </form>
       </div>
     </>
