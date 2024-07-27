@@ -1,9 +1,13 @@
 import "./App.css";
 import { useFormik } from "formik";
 
+type genaral_object={
+  [key:string]:string
+}
+
 function App() {
-  const validate = (values) => {
-    const errors = {};
+  const validate = (values:genaral_object) => {
+    const errors:genaral_object = {};
     if (!values.email) errors.email = "required a email field";
     if (!values.password) errors.password = "required a password field";
     return errors;
