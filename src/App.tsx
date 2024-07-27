@@ -1,13 +1,13 @@
 import "./App.css";
 import { useFormik } from "formik";
 
-type genaral_object={
-  [key:string]:string
-}
+type genaral_object = {
+  [key: string]: string;
+};
 
 function App() {
-  const validate = (values:genaral_object) => {
-    const errors:genaral_object = {};
+  const validate = (values: genaral_object) => {
+    const errors: genaral_object = {};
     if (!values.email) errors.email = "required a email field";
     if (!values.password) errors.password = "required a password field";
     return errors;
@@ -20,12 +20,7 @@ function App() {
     },
     validate,
     onSubmit: (values) => {
-      if (
-        values.email &&
-        values.email === "test@gmail.com" &&
-        values.password &&
-        values.password === "123"
-      )
+      if (values?.email === "test@gmail.com" && values?.password === "123")
         alert("login sucessful.!");
       else alert("invalid deatils");
     },
